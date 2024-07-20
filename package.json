@@ -1,0 +1,82 @@
+{
+  "name": "subapp-template",
+  "version": "1.0.1",
+  "license": "MIT",
+  "scripts": {
+    "dev": "cross-env PORT=3002 craco start",
+    "dev:mock": "cross-env REACT_APP_USE_MOCK=true PORT=3002 craco start",
+    "start": "craco start",
+    "build": "craco build",
+    "build:test": "cross-env PUBLIC_URL=//cms.subapp-template.com/ BUILD_ENV=test npm run build",
+    "build:release": "cross-env PUBLIC_URL=//cms.subapp-template.com/ BUILD_ENV=release npm run build",
+    "test": "craco test",
+    "format": "eslint --max-warnings=0 --fix --ext .ts,.tsx,.js --ignore-path ./.eslintignore src/",
+    "format:css": "stylelint 'src/**/*.less' --fix"
+  },
+  "dependencies": {
+    "@ant-design/icons": "^5.2.6",
+    "@craco/craco": "7.0.0",
+    "@marsidev/react-turnstile": "^0.4.0",
+    "@mdi/js": "^7.4.47",
+    "@mdi/react": "^1.6.1",
+    "@types/lodash": "^4.14.168",
+    "@types/node": "18.17.0",
+    "@types/react": "18.2.45",
+    "@types/react-dom": "18.2.18",
+    "antd": "5.12.5",
+    "axios": "^0.21.1",
+    "craco-antd": "2.0.0",
+    "lodash": "^4.17.21",
+    "mockjs": "^1.1.0",
+    "moment": "^2.30.1",
+    "qs": "^6.11.2",
+    "react": "18.2.0",
+    "react-app-rewire-alias": "1.1.7",
+    "react-dom": "18.2.0",
+    "react-router-dom": "6.21.1",
+    "react-scripts": "^5.0.1",
+    "typescript": "5.3.3"
+  },
+  "devDependencies": {
+    "eslint-plugin-n": "^16.5.0",
+    "@typescript-eslint/eslint-plugin": "6.16.0",
+    "@commitlint/cli": "18.4.3",
+    "@commitlint/config-conventional": "18.4.3",
+    "@types/react-router-dom": "^5.3.3",
+    "cross-env": "7.0.3",
+    "eslint-config-standard": "17.1.0",
+    "eslint-plugin-node": "11.1.0",
+    "eslint-plugin-promise": "6.1.1",
+    "eslint-plugin-react": "7.33.2",
+    "eslint-plugin-react-hooks": "4.6.0",
+    "http-proxy-middleware": "2.0.6",
+    "husky": "8.0.3",
+    "lint-staged": "15.2.0",
+    "stylelint": "^16.1.0",
+    "stylelint-config-standard": "^36.0.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,js,tsx}": [
+      "pnpm format"
+    ],
+    "**/*.less": "npm run format:css"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
